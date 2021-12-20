@@ -1,15 +1,6 @@
 import './App.css';
+import Home from './pages/Home';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-      <body>
-        <p>Holii joel</p>
-      </body>
-    </div>
-  );
-}
+const App = () => <Home/>;
 
 export default App;
