@@ -1,7 +1,7 @@
 # PROTOTIPO PARA LA TRANSCRIPCIÓN DE TEXTO A BRAILLE
 
-> El prototipo de este transcriptor está enfocado para Braille de grado 1
-> Se aplica criterios de abreviación de palabras según las reglas del Braille boliviano
+> El prototipo de este transcriptor está enfocado para Braille de grado 1,
+> Se aplica criterios de abreviación de palabras según las reglas del Braille boliviano,
 > Se considera únicamente la transcripción del lenguaje Español
 
 ## Objetivos

@@ -1,7 +1,9 @@
 from rest_framework import serializers
-from . models import Translation
+from textToBraille.models import Translation
   
 class TranslationSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = Translation
-        fields = ('text', 'braille_translation')
+        fields = ('id', 'text', 'braille_translation')
+        read_only_fields  = ['braille_translation']
