@@ -36,10 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'textToBraille.apps.TexttobrailleConfig',
-    'frontend.apps.FrontendConfig',
-    'rest_framework',
-    'corsheaders',
+    'textToBraille',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
