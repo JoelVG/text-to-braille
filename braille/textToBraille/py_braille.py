@@ -17,7 +17,7 @@ def convert_text(text_to_convert):
     raise TypeError("Only strings can be converted")
   return convert(text_to_convert)
 
-
+#TODO FIX ALGORITHM TO MANAGE UPPERCASE
 def convert_file(fileToConvert):
   if type(fileToConvert) is not str:
     raise TypeError("Please provide a valid file name")
