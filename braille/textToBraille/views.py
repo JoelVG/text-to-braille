@@ -1,3 +1,15 @@
-from django.shortcuts import render
+from rest_framework import mixins, viewsets
+from textToBraille.models import Translation
+from textToBraille.serializer import TranslationSerializer
 
-# Create your views here.
+
+class TranslationViewSet(mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.CreateModelMixin,
+    mixins.DestroyModelMixin,
+    mixins.UpdateModelMixin,
+    viewsets.GenericViewSet):
+    
+    serializer_class = TranslationSerializer
+    queryset = Translation.objects.all()
+    pass
