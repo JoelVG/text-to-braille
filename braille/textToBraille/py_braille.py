@@ -14,17 +14,19 @@ escape_characters = ['\n', '\r', '\t']
 
 def convert_text(text_to_convert):
   if type(text_to_convert) is not str:
-    raise TypeError("¡Solo texto puede ser convertido!")
+    raise TypeError("Only strings can be converted")
   return convert(text_to_convert)
 
-
-def convert_file(file_to_convert):
-  if type(file_to_convert) is not str:
-    raise TypeError("Nombre de archivo incorrecto")
+#TODO FIX ALGORITHM TO MANAGE UPPERCASE
+def convert_file(fileToConvert):
+  if type(fileToConvert) is not str:
+    raise TypeError("Please provide a valid file name")
+  file = open(fileToConvert, "r")
+  lines = file.readlines()
   converted_text = ''
-  with open(file_to_convert) as f:
-    converted_text += convert(f.readline())
-  return converted_text
+  for line in lines:
+    converted_text += convert(line)
+  return converted_text  
 
 
 def show_diff(str1, str2):
@@ -32,16 +34,62 @@ def show_diff(str1, str2):
   d = dl.Differ()
   diff = d.compare(str1, str2)
   print('\n'.join(diff))
+  
+  
+def count_cap_words(i, text_to_convert):
+  j = i
+  while j < len(text_to_convert):
+    if text_to_convert[j].isupper() or text_to_convert[j] in punctuation_marks:
+      j += 1
+      continue
+    else:
+      if j-i < 2:
+        return -1
+      elif text_to_convert[j].islower():
+        break
+  return len(text_to_convert[i:j].split(' '))-1
 
-#TODO usar map_text para mapear text_to_convert con los caracteres especiales
-#TODO agregar caracteres especiales para mayúsculas a character_unicodes
+
+def get_charcaps(i, text_to_convert):
+  n = count_cap_words(i, text_to_convert)
+  #Case1
+  if n == -1:
+    return character_unicodes.get('caps')
+  #CASE2
+  if n < 3:
+    return character_unicodes.get('caps')*2
+  #CASE CASE CASE3....
+  else:
+  	return character_unicodes.get('pcaps')+character_unicodes.get('caps')*2
+  
+  
 def convert(text_to_convert):
+  n_chars = 0
   isNumber = False
+  n_spaces = 0
+  n_words = 0
   converted_text = ''
+  cap_flag = 0
   for character in text_to_convert:
+    n_chars += 1
     if character in escape_characters:
       converted_text += character
       continue
+    #handling uppercase
+    if character.isupper():
+      cap_char = get_charcaps(n_chars, text_to_convert[n_chars-1:])
+      n_words = len(cap_char)
+      if cap_flag == 0:
+        cap_flag = n_words
+      if n_spaces == 0 and cap_flag == n_words:
+        converted_text += cap_char
+        n_spaces = count_cap_words(n_chars, text_to_convert[n_chars-1:]) 
+      elif n_spaces == 1 and cap_flag == 2:
+        converted_text += character_unicodes.get('caps')*2
+        n_spaces = 0
+      elif n_spaces == 1 and cap_flag > 2:
+        converted_text += character_unicodes.get('caps')
+        n_spaces = 0
     character = character.lower()
     if character.isdigit():
       if not isNumber:
@@ -67,6 +115,12 @@ def convert(text_to_convert):
 
 
 if __name__ == '__main__':
+  #   testing abc..
+  # for i in character_unicodes.keys():
+  #     print(f' {i}: {convert_text(str(i))}')
+  # print(f'{convert_text("hola")}')
+  # print(f'{convert_text("Hola")}')
+  # print(f'{convert_text("HOLA")}')
   t1 = convert_text("ESTÁ PROHIBIDO FUMAR DENTRO DE LAS DEPENDENCIAS DE LA EMPRESA".lower())
   print(t1)
   t2 = convert_text("ESTÁ PROHIBIDO FUMAR DENTRO DE LAS DEPENDENCIAS DE LA EMPRESA")

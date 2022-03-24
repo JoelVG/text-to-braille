@@ -1,5 +1,5 @@
 from django.db import models
-from utils.py_braille import convert_text
+from textToBraille.py_braille import convert_text
 
 class Translation(models.Model):
     text = models.CharField(max_length=1000)
