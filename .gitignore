@@ -159,3 +159,4 @@ sketch
 
 # Support for Project snippet scope
 !.vscode/*.code-snippets
+/test_texts
