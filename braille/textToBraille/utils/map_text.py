@@ -1,3 +1,5 @@
+from django.conf import settings
+
 '''
 Serie de funciones que ayudan al manejo de los distintos
 casos del uso de mayúsculas main() -> point_up
@@ -24,30 +26,30 @@ FLAGS = {
     'count': 0,
     'case': 0
 }
-P_MARKS = (',', '.', '-', '~', '¡', '!', '¿', '?', '"', "'", "\\", "/")
 
+P_MARKS = (',', '.', '-', '~', '¡', '!', '¿', '?', '"', "'", "\\", "/")
 
 def reset_flags():
     for f in list(FLAGS.keys()):
         FLAGS[f] = 0
 
 
-def clean_word(word):
+def clean_word(word: str):
     for c in P_MARKS:
         if c in word:
             word = word.replace(c, '')
     return word        
 
 
-def is_case_one(word):
+def is_case_one(word: str):
     return word[0].isupper() and word[1:].islower()
 
 
-def is_case_two(word):
+def is_case_two(word: str):
     return word.isupper()
 
 
-def all_up_case(text, n_words):
+def all_up_case(text: str, n_words: int):
     '''
     Función que devuelve el texto en formato para el caso 3
     '''
@@ -60,7 +62,7 @@ def all_up_case(text, n_words):
     return map_text.lower()
 
 
-def render_case(words, case):
+def render_case(words: str, case: int):
     '''
     Función que renderiza el caso actual. Se llama cada que
     se identifica un nuevo caso
@@ -72,7 +74,12 @@ def render_case(words, case):
     return render
 
 
-def point_up(text):
+def point_up(text: str):
+    '''
+    Función que mapea el texto con los caracteres especiales ('ϗ','ϐ','λ')
+    dependiendo del caso que se trata. Ejm: texto | braille
+    - Cueva | 
+    '''
     n_words = len(text.split())
     # Filtro para texto en mayúscula y minúscula
     if all(w.isupper() for w in (t for t in text.split())) and n_words > 2:
