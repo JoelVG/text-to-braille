@@ -42,7 +42,7 @@ def clean_word(word: str):
 
 
 def is_case_one(word: str):
-    return word[0].isupper() and word[1:].islower()
+    return word[0].isupper() and word[1:].islower() if word != '' else word
 
 
 def is_case_two(word: str):
