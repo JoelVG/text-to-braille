@@ -1,4 +1,4 @@
-from map_text import point_up
+from textToBraille.utils.map_text import point_up
 from pathlib import Path
 import codecs
 
@@ -66,7 +66,7 @@ def convert(text_to_convert):
       if is_number and character not in number_punctuations:
         is_number = False
     if character == ' ':
-      converted_text += '|' # | para remarcar (en tests) que existe un espacio, luego reemplazar solo por ' ' 
+      converted_text += ' ' # | para remarcar (en tests) que existe un espacio, luego reemplazar solo por ' ' 
     else:
       try:
         converted_text += character_unicodes.get(character)
@@ -75,9 +75,9 @@ def convert(text_to_convert):
   return converted_text
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
   # t1 = convert_text("ESTÁ PROHIBIDO FUMAR DENTRO DE LAS DEPENDENCIAS DE LA EMPRESA".lower())
   # print(t1)
   # t2 = convert_text("ESTÁ PROHIBIDO FUMAR DENTRO DE LAS DEPENDENCIAS DE LA EMPRESA")
   # show_diff(t2, t1)
-  print(convert_file("D:\\REPOS/PROYECTO DE GRADO\\text-to-braille\\test_texts\\t1.txt"))
+  # print(convert_file("D:\\REPOS/PROYECTO DE GRADO\\text-to-braille\\test_texts\\t1.txt"))
