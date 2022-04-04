@@ -1,6 +1,7 @@
 from textToBraille.utils.map_text import point_up
 from pathlib import Path
 import codecs
+import fitz
 
 character_unicodes = {
   'a': '\u2801', 'b': '\u2803', 'c': '\u2809', 'd': '\u2819', 'e': '\u2811', 'f': '\u280B', 'g': '\u281B', 'h': '\u2813', 'i': '\u280A',
@@ -27,14 +28,29 @@ def convert_text(text_to_convert):
   return convert(text_to_convert)
 
 
-def convert_file(file_to_convert):
+def get_extension(path: str):
+  return Path(path).suffix
+
+
+def convert_file(file_to_convert: str):
+  '''
+  Función que recibe un texto en formato .txt
+  o .pdf y devuelve la transcripción del mismo 
+  '''
   if type(file_to_convert) is not str:
-    raise TypeError("Nombre de archivo incorrecto")
+    return None
+  ext = get_extension(file_to_convert)
   converted_text = ''
-  # Path(file_to_convert) tal vez se use para los paths de windows
-  with codecs.open(file_to_convert, encoding='utf-8') as f:
-    for line in f:
-      converted_text += convert(line)
+  if ext == '.txt':
+    with codecs.open(file_to_convert, encoding='utf-8') as f:
+      for line in f:
+        converted_text += convert(line)
+  elif ext == '.pdf':
+    with fitz.open(file_to_convert) as doc:
+      for page in doc:
+        converted_text += convert(page.get_text())
+  else:
+    converted_text = None
   return converted_text
 
 
@@ -49,7 +65,11 @@ def show_diff(str1, str2):
   print('\n'.join(diff))
 
 
-def convert(text_to_convert):
+def convert(text_to_convert: str):
+  '''
+  Función que se encarga de la converción
+  de texto a Braille
+  '''
   is_number = False
   converted_text = ''
   marked_text = point_up(text_to_convert)
@@ -80,4 +100,5 @@ def convert(text_to_convert):
   # print(t1)
   # t2 = convert_text("ESTÁ PROHIBIDO FUMAR DENTRO DE LAS DEPENDENCIAS DE LA EMPRESA")
   # show_diff(t2, t1)
-  # print(convert_file("D:\\REPOS/PROYECTO DE GRADO\\text-to-braille\\test_texts\\t1.txt"))
+# print(convert_file("D:\\REPOS/PROYECTO DE GRADO\\text-to-braille\\test_texts\\t1.txt"))
+# print(get_extension("D:\\REPOS/PROYECTO DE GRADO\\text-to-braille\\test_texts\\t1.txt"))
