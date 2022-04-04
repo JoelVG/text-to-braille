@@ -10,3 +10,10 @@
 - El idioma que se manejará para la transcripción será únicamente el español y Braille adoptado en Bolivia.
 - El manejo de esta herramienta no está contemplado para personas invidentes.
 - Se contempla la transcripción únicamente de textos cortos de hasta 1000 palabras.
+
+## Endpoints
+```
+POST /api/text/       Crea una "traducción" de un texto que se le pasa.
+GET	 /api/text/{id}   Muestra el texto original y su equivalente en Braille.
+GET	 /api/file/	      Recibe el path de un archivo .txt o .pdf, extrae y devuelve su equivalente en Braille.
+```
