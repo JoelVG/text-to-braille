@@ -132,7 +132,7 @@ logs
 **/*.backup.*
 **/*.back.*
 
-node_modules
+frontend/node_modules/
 bower_components
 
 *.sublime*
