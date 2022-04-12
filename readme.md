@@ -28,12 +28,9 @@ de la o las palabras para dicho caso.
 de la primera palabra que lleva la frase y a inicios de la última palabra los caracteres `⠨` para concluir o cerrar.
 
 ## Endpoints
-```
-POST /api/text/       Crea una "traducción" de un texto que se le pasa.
-GET	 /api/text/{id}   Muestra el texto original y su equivalente en Braille.
-GET	 /api/file/	      Recibe el path de un archivo .txt o .pdf, extrae y devuelve su equivalente en Braille.
-```
-
+```POST  /api/text/       Crea una "traducción" de un texto que se le pasa.```
+```GET	 /api/text/{id}   Muestra el texto original y su equivalente en Braille.```
+```GET	 /api/file/	      Recibe el path de un archivo .txt o .pdf, extrae y devuelve su equivalente en Braille.```
 
 ## Correr el proyecto
 ### Docker
