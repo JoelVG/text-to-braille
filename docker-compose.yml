@@ -1,0 +1,13 @@
+version: "3"
+   
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "./runserver.sh"
+    volumes:
+      - .:/braille
+    ports:
+      - "8000:8000"
+    container_name: braille_web

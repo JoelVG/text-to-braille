@@ -17,3 +17,22 @@ POST /api/text/       Crea una "traducción" de un texto que se le pasa.
 GET	 /api/text/{id}   Muestra el texto original y su equivalente en Braille.
 GET	 /api/file/	      Recibe el path de un archivo .txt o .pdf, extrae y devuelve su equivalente en Braille.
 ```
+
+
+## Correr el proyecto
+### Docker
+Tener el docker corriendo
+Ejecutar:
+```
+docker compose up --build (buildear por primera vez)
+docker compose up (levantar el servicio)
+docker compose down (detener el servicio)
+```
+
+### Requirements
+Python 3.8.*
+```
+pip install -r requirements.txt
+python mananage.py migrate
+python mananage.py runserver
+```

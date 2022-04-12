@@ -15,7 +15,8 @@ def get_env_value(env_variable):
         error_msg = f"Set the {env_variable} environment variable"
         raise ImproperlyConfigured(error_msg)
 
-SECRET_KEY = get_env_value('SECRET_BRAILLE')
+SECRET_KEY = os.getenv('SECRET_BRAILLE', 'uyq@+y&buqvqmjvdr=l-+g(4mvy%++zph%8u4pax-lzbl(8@=!')
+
 
 DEBUG = True
 
@@ -45,7 +46,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'braille.urls'
