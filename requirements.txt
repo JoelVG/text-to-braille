@@ -1,4 +1,5 @@
-django==3.1.2
-djangorestframework==3.12
-pillow==8.0
+django==3.2
+djangorestframework
+pillow
 pymupdf==1.19
+pre-commit
