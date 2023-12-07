@@ -8,35 +8,6 @@ db.sqlite3
 db.sqlite3-journal
 media
 
-### Django.Python Stack ###
-# Byte-compiled / optimized / DLL files
-*.py[cod]
-*$py.class
-
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-*.manifest
-*.spec
-
 # Unit test / coverage reports
 htmlcov/
 .tox/
@@ -73,7 +44,6 @@ logs
 frontend/node_modules/
 bower_components
 
-
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
@@ -81,3 +51,6 @@ bower_components
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
+
+# Misc
+.ruff_cache
