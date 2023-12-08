@@ -1,5 +1,5 @@
 django==3.2
 djangorestframework
 pillow
-pymupdf==1.19
+pymupdf==1.23
 pre-commit

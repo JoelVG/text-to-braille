@@ -6,7 +6,7 @@ from textToBraille.utils.constants import (
 )
 from pathlib import Path
 import codecs
-import fitz
+import fitz  # PyMuPDF
 
 
 def convert_text(text_to_convert):
@@ -15,14 +15,14 @@ def convert_text(text_to_convert):
     return convert(text_to_convert)
 
 
-def get_extension(path: str):
+def get_extension(path: str) -> str:
     return Path(path).suffix
 
 
-def convert_file(file_to_convert: str):
+def convert_file(file_to_convert: str) -> str:
     """
     Función que recibe un texto en formato .txt
-    o .pdf y devuelve la transcripción del mismo
+    o .pdf y devuelve la transcripción a Braille del mismo.
     """
     if type(file_to_convert) is not str:
         return None
@@ -41,7 +41,7 @@ def convert_file(file_to_convert: str):
     return converted_text
 
 
-def show_diff(str1, str2):
+def show_diff(str1: str, str2: str):
     """
     Método que ayuda a mostrar las diferencias entre dos
     cadenas de texto
@@ -53,7 +53,7 @@ def show_diff(str1, str2):
     print("\n".join(diff))
 
 
-def convert(text_to_convert: str):
+def convert(text_to_convert: str) -> str:
     """
     Función que se encarga de la converción
     de texto a Braille
@@ -74,7 +74,8 @@ def convert(text_to_convert: str):
             if is_number and character not in NUMBER_PUNCTUATIONS:
                 is_number = False
         if character == " ":
-            # | para remarcar (en tests) que existe un espacio, luego reemplazar solo por ' '
+            # | para remarcar (en tests) que existe un espacio,
+            # luego reemplazar solo por ' '
             converted_text += " "
         else:
             try:
@@ -84,10 +85,9 @@ def convert(text_to_convert: str):
     return converted_text
 
 
+# print(convert("NECESITAS ORDERNAR TU CÓDIGO! "))
 # if __name__ == '__main__':
-# t1 = convert_text("ESTÁ PROHIBIDO FUMAR DENTRO DE LAS DEPENDENCIAS DE LA EMPRESA".lower())
+# t1 = convert_text("ESTÁ PROHIBIDO FUMAR".lower())
 # print(t1)
-# t2 = convert_text("ESTÁ PROHIBIDO FUMAR DENTRO DE LAS DEPENDENCIAS DE LA EMPRESA")
+# t2 = convert_text("ESTÁ PROHIBIDO FUMAR")
 # show_diff(t2, t1)
-# print(convert_file("D:\\REPOS/PROYECTO DE GRADO\\text-to-braille\\test_texts\\t1.txt"))
-# print(get_extension("D:\\REPOS/PROYECTO DE GRADO\\text-to-braille\\test_texts\\t1.txt"))
