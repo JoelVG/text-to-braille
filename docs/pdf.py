@@ -1,9 +1,7 @@
 import fitz
 
 path = ""
-with fitz.open(
-    "D:\\REPOS\\PROYECTO DE GRADO\\text-to-braille\\test_texts\\testpdf.pdf"
-) as doc:
+with fitz.open("D:/Repos/text-to-braille/docs/data/test2.pdf") as doc:
     text = ""
     for i, page in enumerate(doc):
         print("line# ", i)
