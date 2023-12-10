@@ -1,2 +1,6 @@
 https://www.minedu.gob.bo/files/publicaciones/veaye/dgee/jica8_APRENDIZAJE_DEL_BRAILLE-ABACO.pdf
 https://jrgraphix.net/r/Unicode/2800-28FF
+
+
+#pymupdf
+https://pymupdf.readthedocs.io/en/latest/tutorial.html

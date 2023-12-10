@@ -5,7 +5,6 @@ from textToBraille.utils.constants import (
     ESCAPE_CHARACTERS,
 )
 from pathlib import Path
-import codecs
 import fitz  # PyMuPDF
 
 
@@ -29,7 +28,7 @@ def convert_file(file_to_convert: str) -> str:
     ext = get_extension(file_to_convert)
     converted_text = ""
     if ext == ".txt":
-        with codecs.open(file_to_convert, encoding="utf-8") as f:
+        with open(file_to_convert, encoding="utf-8") as f:
             for line in f:
                 converted_text += convert(line)
     elif ext == ".pdf":
