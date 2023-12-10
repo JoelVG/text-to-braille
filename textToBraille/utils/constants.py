@@ -3,6 +3,8 @@
 # ϐ=[4,6][4,6]
 # ϗ=[4,6]
 
+# Notas:
+# - No se tiene registro en braille para los caracteres: #, @, ^, &, _, `, ~
 CHARACTERS_UNICODE = {
     "a": "\u2801",
     "b": "\u2803",
