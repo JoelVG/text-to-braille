@@ -135,3 +135,4 @@ FLAGS = {
 }
 
 P_MARKS = (',', '.', '-', '~', '¡', '!', '¿', '?', '"', "'", "\\", "/")
+SESSION_COOKIE_SECURE = True
