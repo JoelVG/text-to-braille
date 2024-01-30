@@ -21,8 +21,7 @@ class TranslationViewSet(
         Función que recibe el path de un archivo .txt o .pdf
         y retorna la transcripción del mismo
         """
-        file_path = request.POST.get("text")
-        if file_path is not None:
+        if (file_path := request.POST.get("text")) is not None:
             text_converted = convert_file(file_path)
         else:
             return JsonResponse(
