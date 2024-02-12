@@ -3,6 +3,8 @@ from textToBraille.utils.constants import (
     CHARACTERS_UNICODE,
     NUMBER_PUNCTUATIONS,
     ESCAPE_CHARACTERS,
+    BRAILLE_UNICODE,
+    SPECIAL_MARKS,
 )
 from pathlib import Path
 import fitz  # PyMuPDF
@@ -84,6 +86,52 @@ def convert(text_to_convert: str) -> str:
     return converted_text
 
 
+def braille_to_text(text: str) -> str:
+    case = 0
+    translated_text = ""
+    for word in text:
+        word = lookup_braille(word)
+        if case == 2:
+            word = word.upper()
+            case = 0
+        if case == 3:
+            if "⠨" in word:  # Última palabra en mayúsculas
+                word = word.replace("⠨", "").upper()
+                case = 0
+            else:
+                word = word.upper()
+        if "⠨" in word:  # Caso 1
+            word = word.replace("⠨", "").capitalize()
+        elif "⠨⠨" in word:  # Caso 2
+            case = 2
+            word = word.replace("⠨⠨", "").upper()
+        elif "⠒⠨⠨" in word:
+            case = 3
+            word = word.replace("⠨⠨", "").upper()
+        translated_text += word
+        print(translated_text)
+    return translated_text
+
+
+def lookup_braille(braille_text: str) -> str:
+    """
+    Busca caracter por caracter de un texto en braille en el mapping
+    actual de caracteres con el que se trabaja.
+    """
+    word = ""
+    for c in braille_text:
+        if c not in SPECIAL_MARKS:
+            character = BRAILLE_UNICODE.get(c)
+            if character:
+                word += character
+            else:
+                raise ValueError(f"Caracter {c} no encontrado en el mapping actual.")
+        else:
+            word += c
+    return word
+
+
+print(braille_to_text("⠨⠓⠕⠇⠁"))
 # print(convert("NECESITAS ORDERNAR TU CÓDIGO! "))
 # if __name__ == '__main__':
 # t1 = convert_text("ESTÁ PROHIBIDO FUMAR".lower())

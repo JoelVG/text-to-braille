@@ -4,12 +4,15 @@ casos del uso de mayúsculas main() -> point_up
 [n,m] = simulan los puntos que estarían marcados en una casilla de Braille
 """
 # CASO 1
-# #Hola > ϗhola | ϗ=[4,6]
+# #Hola > ϗhola | ϗ=[4,6](⠨)
 # CASO 2
-# #HOLA > ϐhola | ϐ=[4,6][4,6]
+# #HOLA > ϐhola | ϐ=[4,6][4,6](⠨⠨)
 # #HOLA EXTRAÑO > ϐHOLA ϐEXTRAÑO
 # CASO 3
-# #HOLA EXTRAÑO, ESTO ES BRAILLE > λhola extraño, esto es ϗbraille | λ=[2,5][4,6][4,6]
+# #HOLA EXTRAÑO, ESTO ES BRAILLE > λhola extraño, esto es ϗbraille
+# | λ=[2,5][4,6][4,6] (⠒⠨⠨)
+# CASO 4
+## Tengo 19 años > TODO acabar de agregar el caso numérico
 
 # TEST: 'ALGUNAS PALABRAS SON GRAMATICALMENTE ERRÓNEAS.
 # Pero se tiene que seguir transcribiendo'

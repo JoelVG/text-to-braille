@@ -2,6 +2,7 @@
 # λ=[2,5][4,6][4,6]
 # ϐ=[4,6][4,6]
 # ϗ=[4,6]
+# ɳ = [3,4,5,6]
 
 # Notas:
 # - No se tiene registro en braille para los caracteres: #, @, ^, &, _, `, ~
@@ -75,6 +76,7 @@ CHARACTERS_UNICODE = {
     "pcaps": "\u2812",
     "ϐ": "\u2828" * 2,
     "λ": "\u2812" + "\u2828" * 2,
+    "ɳ": "\u283C",
 }
 
 NUMBER_PUNCTUATIONS = (".", ",", "-", "/", "$")
@@ -97,3 +99,7 @@ PUNCTUATION_MARKS = (
 )
 
 ESCAPE_CHARACTERS = ["\n", "\r", "\t"]
+
+BRAILLE_UNICODE = dict((v, k) for k, v in CHARACTERS_UNICODE.items())
+
+SPECIAL_MARKS = ("⠨", "⠨⠨", "⠒⠨⠨")
