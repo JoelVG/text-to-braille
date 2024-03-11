@@ -1,0 +1,15 @@
+case: 1
+text:Hola
+braille:⠨⠓⠕⠇⠁
+
+case: 2
+text:HOLA
+braille:⠨⠨⠓⠕⠇⠁
+
+case: 3
+text:HOLA EXTRAÑO
+braille:⠒⠨⠨⠓⠕⠇⠁ ⠨⠑⠭⠞⠗⠁⠻⠕
+
+case: 4
+text:HOLA EXTRAÑO, ADIÓS
+braille:⠒⠨⠨⠓⠕⠇⠁ ⠑⠭⠞⠗⠁⠻⠕⠂ ⠨⠁⠙⠊⠬⠎

@@ -6,26 +6,24 @@ from textToBraille.utils.constants import (
     BRAILLE_UNICODE,
     SPECIAL_MARKS,
 )
-from pathlib import Path
+from textToBraille.utils.common import get_extension
 import fitz  # PyMuPDF
 
 
 def convert_text(text_to_convert):
-    if type(text_to_convert) is not str:
-        raise TypeError("¡Solo texto puede ser convertido!")
+    if not isinstance(text_to_convert, str):
+        # raise TypeError("¡Solo texto puede ser convertido!")
+        return None
     return convert(text_to_convert)
-
-
-def get_extension(path: str) -> str:
-    return Path(path).suffix
 
 
 def convert_file(file_to_convert: str) -> str:
     """
-    Función que recibe un texto en formato .txt
+    Función que recibe un archivo en formato .txt
     o .pdf y devuelve la transcripción a Braille del mismo.
     """
-    if type(file_to_convert) is not str:
+    if not isinstance(file_to_convert, str):
+        # raise TypeError("¡Solo texto puede ser convertido!")
         return None
     ext = get_extension(file_to_convert)
     converted_text = ""
@@ -40,18 +38,6 @@ def convert_file(file_to_convert: str) -> str:
     else:
         converted_text = None
     return converted_text
-
-
-def show_diff(str1: str, str2: str):
-    """
-    Método que ayuda a mostrar las diferencias entre dos
-    cadenas de texto
-    """
-    import difflib as dl
-
-    d = dl.Differ()
-    diff = d.compare(str1, str2)
-    print("\n".join(diff))
 
 
 def convert(text_to_convert: str) -> str:

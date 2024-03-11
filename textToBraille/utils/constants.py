@@ -34,7 +34,6 @@ CHARACTERS_UNICODE = {
     "x": "\u282D",
     "y": "\u283D",
     "z": "\u2835",
-    "num": "\u283C",
     "ϗ": "\u2828",
     ".": "\u2832",
     "'": "\u2820",
@@ -102,4 +101,13 @@ ESCAPE_CHARACTERS = ["\n", "\r", "\t"]
 
 BRAILLE_UNICODE = dict((v, k) for k, v in CHARACTERS_UNICODE.items())
 
-SPECIAL_MARKS = ("⠨", "⠨⠨", "⠒⠨⠨")
+# Representación en braille de los distintos casos
+SPECIAL_MARKS = ("⠨", "⠨⠨", "⠒⠨⠨", "⠼")
+
+# Caracteres especiales que se usarán para los distintos casos
+CASE_CHARS = ("ϗ", "ϐ", "λ", "ɳ")
+
+# Conjunto de FLAGS que ayudan al control e identificación de los distintos casos
+FLAGS = {"pos_ini": 0, "pos_fin": 0, "count": 0, "case": 0}
+
+P_MARKS = (",", ".", "-", "~", "¡", "!", "¿", "?", '"', "'", "\\", "/")

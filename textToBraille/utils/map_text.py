@@ -3,6 +3,8 @@ Serie de funciones que ayudan al manejo de los distintos
 casos del uso de mayúsculas main() -> point_up
 [n,m] = simulan los puntos que estarían marcados en una casilla de Braille
 """
+from textToBraille.utils.constants import CASE_CHARS, FLAGS, P_MARKS
+
 # CASO 1
 # #Hola > ϗhola | ϗ=[4,6](⠨)
 # CASO 2
@@ -18,20 +20,14 @@ casos del uso de mayúsculas main() -> point_up
 # Pero se tiene que seguir transcribiendo'
 # TEST2: 'El tiempo es un tema de reflexión tan apasionante como escurridizo'
 
-# Caracteres especiales que se usarán para los distintos casos
-CASE_CHARS = ("ϗ", "ϐ", "λ")
-
-# Conjunto de FLAGS que ayudan al control e identificación de los distintos casos
-FLAGS = {"pos_ini": 0, "pos_fin": 0, "count": 0, "case": 0}
-
-P_MARKS = (",", ".", "-", "~", "¡", "!", "¿", "?", '"', "'", "\\", "/")
-
 
 def reset_flags():
     for f in list(FLAGS.keys()):
         FLAGS[f] = 0
 
 
+# TODO verificar por qué se hace esto ya que se tienen
+# mapeados la mayoría de estos caracteres
 def clean_word(word: str) -> str:
     """
     Función que elimina los caracteres especiales del texto
@@ -86,9 +82,10 @@ def render_case(words: str, case: int):
     return render
 
 
+# wtf? .-.
 def point_up(text: str) -> str:
     """
-    Función que mapea el texto con los caracteres especiales ('ϗ','ϐ','λ')
+    Función que mapea el texto con los caracteres especiales ('ϗ','ϐ','λ', 'ɳ')
     dependiendo del caso que se trata.
     """
     n_words = len(text.split())
@@ -102,6 +99,8 @@ def point_up(text: str) -> str:
     result_text = ""
     words = text.split()
     for i, word in enumerate(words):
+        if word.isnumeric():
+            word = CASE_CHARS[3] + word
         if is_case_one(
             clean_word(word)
         ):  # No se renderiza como los demás porque es un caso trivial
