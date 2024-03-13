@@ -19,7 +19,7 @@ En el siguiente cuadro se muestran los mismos:
 | Caso 2 | HOLA | ⠨⠨⠓⠕⠇⠁ |
 | Caso 3 | HOLA EXTRAÑO | ⠨⠨⠓⠕⠇⠁ ⠨⠨⠑⠭⠞⠗⠁⠻⠕ |
 | Caso 4 | HOLA AMIGOS, ¿CÓMO ESTÁN? | ⠒⠨⠨⠓⠕⠇⠁ ⠁⠍⠊⠛⠕⠎⠂ ⠢⠉⠬⠍⠕ ⠨⠑⠎⠞⠷⠝⠢ |
-| Caso 5 | Me llamo Joe y tengo 25 años| 
+| Caso 5 | Me llamo Joe y tengo 25 años|
 
 - Caso 1: Se tiene la primera letra en mayúscula donde se aplica el caracter especial `⠨` para denotar
 que la primera letra de la palabra inicia con mayúscula.

@@ -10,7 +10,7 @@ from textToBraille.utils.common import get_extension
 import fitz  # PyMuPDF
 
 
-def convert_text(text_to_convert):
+def convert_text(text_to_convert: str):
     if not isinstance(text_to_convert, str):
         # raise TypeError("¡Solo texto puede ser convertido!")
         return None
@@ -117,7 +117,7 @@ def lookup_braille(braille_text: str) -> str:
     return word
 
 
-print(braille_to_text("⠨⠓⠕⠇⠁"))
+# print(braille_to_text("⠨⠓⠕⠇⠁"))
 # print(convert("NECESITAS ORDERNAR TU CÓDIGO! "))
 # if __name__ == '__main__':
 # t1 = convert_text("ESTÁ PROHIBIDO FUMAR".lower())

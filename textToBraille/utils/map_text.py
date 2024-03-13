@@ -82,7 +82,6 @@ def render_case(words: str, case: int):
     return render
 
 
-# wtf? .-.
 def point_up(text: str) -> str:
     """
     Función que mapea el texto con los caracteres especiales ('ϗ','ϐ','λ', 'ɳ')
@@ -138,4 +137,5 @@ def point_up(text: str) -> str:
         result_text += render_case(
             words[FLAGS["pos_ini"] : FLAGS["pos_fin"] + 1], FLAGS["count"]
         )
+        reset_flags()
     return result_text.lower().strip()
