@@ -1,6 +1,6 @@
 FROM python:3.9-slim
 
-RUN apt-get update && apt-get install -y --no-install-recommends gcc wget python-dev libpq-dev build-essential
+RUN apt-get update && apt-get install -y --no-install-recommends gcc wget libpq-dev build-essential libcrypt1
 
 WORKDIR /braille
 
