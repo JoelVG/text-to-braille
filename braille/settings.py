@@ -18,7 +18,7 @@ def get_env_value(env_variable):
 SECRET_KEY = os.getenv('SECRET_BRAILLE', 'uyq@+y&buqvqmjvdr=l-+g(4mvy%++zph%8u4pax-lzbl(8@=!')
 
 
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     ALLOWED_HOSTS = []
